@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -49,5 +50,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
     Route::post('/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
     Route::get('/contacts/{id}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
-
 });
+Route::resource('buku', BukuController::class);
+Route::get('/home', [BukuController::class, 'index'])->name('home');
+
+
